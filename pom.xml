@@ -60,6 +60,13 @@
 			<version>${appengine.version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.googlecode.objectify/objectify -->
+		<dependency>
+			<groupId>com.googlecode.objectify</groupId>
+			<artifactId>objectify</artifactId>
+			<version>5.1.21</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.apache.myfaces.core/myfaces-api -->
 		<dependency>
 			<groupId>org.apache.myfaces.core</groupId>

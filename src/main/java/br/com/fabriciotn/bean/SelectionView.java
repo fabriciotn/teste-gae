@@ -14,7 +14,7 @@ import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 
 import br.com.fabriciotn.model.Car;
-import service.CarService;
+import br.com.fabriciotn.service.CarService;
  
 @ManagedBean(name="dtSelectionView")
 @ViewScoped

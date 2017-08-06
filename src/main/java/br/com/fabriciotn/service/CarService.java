@@ -1,4 +1,4 @@
-package service;
+package br.com.fabriciotn.service;
 
 import java.io.Serializable;
 import java.util.ArrayList;
