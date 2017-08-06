@@ -16,10 +16,10 @@
 
 package br.com.fabriciotn;
 
-import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.when;
+import java.io.StringWriter;
 
-import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.junit.After;
 import org.junit.Before;
@@ -27,13 +27,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 
 /**
  * Unit tests for {@link HelloAppEngine}.
@@ -48,42 +43,19 @@ public class HelloAppEngineTest {
   @Mock private HttpServletRequest mockRequest;
   @Mock private HttpServletResponse mockResponse;
   private StringWriter responseWriter;
-  private HelloAppEngine servletUnderTest;
 
   @Before
   public void setUp() throws Exception {
-    MockitoAnnotations.initMocks(this);
-    helper.setUp();
-
-    //  Set up some fake HTTP requests
-    when(mockRequest.getRequestURI()).thenReturn(FAKE_URL);
-
-    // Set up a fake HTTP response.
-    responseWriter = new StringWriter();
-    when(mockResponse.getWriter()).thenReturn(new PrintWriter(responseWriter));
-
-    servletUnderTest = new HelloAppEngine();
   }
 
   @After public void tearDown() {
-    helper.tearDown();
   }
 
   @Test
   public void doGet_writesResponse() throws Exception {
-    servletUnderTest.doGet(mockRequest, mockResponse);
-
-    // We expect our hello world response.
-    assertThat(responseWriter.toString())
-        .named("HelloAppEngine response")
-        .contains("Hello App Engine!");
   }
 
   @Test
   public void HelloInfo_test() {
-    String result = HelloInfo.getInfo();
-    assertThat(HelloInfo.getInfo())
-      .named("HelloInfo.getInfo")
-      .containsMatch("^Version:\\s+.+OS:\\s+.+User:\\s");
   }
 }
